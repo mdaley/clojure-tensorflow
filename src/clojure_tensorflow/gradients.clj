@@ -1,5 +1,6 @@
 (ns clojure-tensorflow.gradients
   (:require
+   [clojure.java.io :as io]
    [clojure-tensorflow.build :as build]
    [clojure-tensorflow.graph :as graph]
    [clojure-tensorflow.utils :as utils]
@@ -24,7 +25,7 @@
 ;; Read gradients file
 (def parsed-gradients
   (read-string
-   (slurp "resources/gradients.edn")))
+   (slurp (io/resource "gradients.edn"))))
 
 (nth
  (get parsed-gradients "Abs") 4)
